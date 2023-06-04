@@ -1,1 +1,7 @@
+networkx
 matplotlib
+numpy
+docplex
+qiskit
+qiskit_optimization
+qiskit_aer
