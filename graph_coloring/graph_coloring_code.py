@@ -5,11 +5,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from docplex.mp.model import Model
+from qiskit_aer import Aer
 from qiskit_optimization.algorithms import MinimumEigenOptimizer
 from qiskit_optimization.translators import from_docplex_mp
 
-from qiskit import BasicAer
+from qiskit import Aer
 from qiskit.algorithms import QAOA
+#from qiskit.algorithms.minimum_eigensolvers import QAOA
 from qiskit.utils import algorithm_globals
 from qiskit.utils import QuantumInstance
 
@@ -106,7 +108,7 @@ print(qp.prettyprint())
 
 seed = 1234
 algorithm_globals.random_seed = seed
-quantum_instance = QuantumInstance(backend=BasicAer.get_backend('qasm_simulator'), shots=10000)
+quantum_instance = QuantumInstance(backend=Aer.get_backend('qasm_simulator'), shots=10000)
 qaoa = MinimumEigenOptimizer(min_eigen_solver=QAOA(reps=3, quantum_instance=quantum_instance))
 qaoa_result = qaoa.solve(qp)
 
